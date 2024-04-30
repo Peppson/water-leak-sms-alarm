@@ -1,5 +1,4 @@
 
-
 # water-leak-sms-alarm <img src="./_images/sms_icon.svg" style=" width: 40px; margin-bottom: -4px;">  
 A small battery-powered device that detects water leakage and sends an SMS alert.  
 &nbsp;
@@ -7,7 +6,7 @@ A small battery-powered device that detects water leakage and sends an SMS alert
 ## Features
 - Completely `off` until water *(or anything conductive)* closes the circuit between two of its legs,  
 thereby latching on the "soft latching power circuit".  
-Which is later turned off again by the microcontroller.
+Which can later be turned off again by the microcontroller.
 
 - Latches `on` by either water detection or by pressing the test button.
 
