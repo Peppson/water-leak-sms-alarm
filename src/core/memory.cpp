@@ -22,8 +22,9 @@ void Memory::begin() {
 }
 
 
-void Memory::increment_eeprom_count(int address, int amount) {
+void Memory::increment_eeprom_count(int address, int amount, bool bootup_delay) {
     if (_has_eeprom_failed) { return; }
+    if (bootup_delay) { delay(1000); }
 
     // Incremeent
     uint8_t value = EEPROM.read(address);
