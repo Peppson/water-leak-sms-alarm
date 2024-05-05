@@ -11,7 +11,7 @@ public:
     void begin();
     void end();
     static bool get_has_eeprom_failed();
-    static void increment_eeprom_count(int address, int amount = 1); 
+    static void increment_eeprom_count(int address, int amount = 1, bool bootup_delay = false); 
     static void reset_eeprom_count(int address);
     static void get_eeprom_counter_String(String& str, const int address);
     
