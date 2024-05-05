@@ -25,7 +25,7 @@ void setup() {
     }
 
     // Normal boot
-    memory.increment_eeprom_count(MemAddr::BootCount);  
+    memory.increment_eeprom_count(MemAddr::BootCount, 1, true);  
 
     if (is_water_leak_detected()) {
         sms.send_message(SMSType::Alert);
