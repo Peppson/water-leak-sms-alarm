@@ -41,7 +41,7 @@ More images in:
 - Conductive legs in copper/brass
 </details>
 
-![Schematic](./_images/schematic.png)
+![Schematic](./_images/KiCad_schematic.png)
 
 &nbsp;
 
