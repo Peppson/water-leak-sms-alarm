@@ -3,5 +3,6 @@
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/ipch
-_KiCad/water-leak-sms-alarm-backups
+_kicad/water-leak-sms-alarm-backups
+_kicad/fabrication-toolkit-options.json
 secrets.h
