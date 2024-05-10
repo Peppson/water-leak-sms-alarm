@@ -1,5 +1,5 @@
 
-# water-leak-sms-alarm <img src="./_images/sms_icon.svg" style=" width: 40px; margin-bottom: -4px;">  
+# water-leak-sms-alarm <img src="./_images/water_icon.svg" style=" width: 40px; margin-bottom: -4px;">  
 A small battery-powered device that detects water leakage and sends an SMS alert.  
 &nbsp;
 
@@ -18,9 +18,9 @@ Which can later be turned off again by the microcontroller.
 
 &nbsp; 
 
-## Schematic
+## Schematic and PCB
 KiCad files can be found here: 
-[📂 _KiCad/](./_KiCad/)  
+[📂 _kicad/](./_kicad/)  
 More images in: 
 [📂 _images/](./_images/)
 <details>
@@ -28,7 +28,7 @@ More images in:
         Parts used
     </summary>   
 
-- ESP32 Wemos D1 Mini  
+- ESP32 D1 Mini NodeMCU 
 - SIM800L with external antenna  
 - 3.3V LDO: MCP1700-3302E (250mA)
 - LED: WS2812B  
@@ -41,8 +41,15 @@ More images in:
 - Conductive legs in copper/brass
 </details>
 
-![Schematic](./_images/KiCad_schematic.png)
+### Schematic
+![Schematic](./_images/schematic_v2.png)
 
+
+### PCB
+Uses mostly through-hole components for easier soldering.  
+ESP32 is mounted on the bottom side of the PCB.
+
+![PCB](./_images/pcb_schematic.PNG)
 &nbsp;
 
 ## SMS Example
