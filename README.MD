@@ -19,7 +19,7 @@ Which can later be turned off again by the microcontroller.
 &nbsp; 
 ## Schematic and PCB
 KiCad files can be found here: 
-[📂 _kicad/](./_kicad/)  
+[📂 _KiCad/](./_KiCad/)  
 More images in: 
 [📂 _images/](./_images/)
 <details>
