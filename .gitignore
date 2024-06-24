@@ -4,5 +4,5 @@
 .vscode/launch.json
 .vscode/ipch
 _kicad/water-leak-sms-alarm-backups
-_kicad/fabrication-toolkit-options.json
 secrets.h
+misc.txt
