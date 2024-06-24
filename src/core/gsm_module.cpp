@@ -18,7 +18,7 @@ std::string GsmModule::_network_operator = "undefined";
 // Public
 //
 
-bool GsmModule::begin(const SMSType sms_type) {
+void GsmModule::begin(const SMSType sms_type) {
     hardware::set_led_color(sms_type);
     digitalWrite(PIN_SIM800L_POWER_SWITCH, HIGH); 
 
@@ -39,10 +39,7 @@ bool GsmModule::begin(const SMSType sms_type) {
     } else {
         log("SIM800L powered on! \n");
         _is_sim800l_on = true;
-        return true;
     }
-
-    return false;
 }
 
 
@@ -58,10 +55,16 @@ void GsmModule::send_message(const SMSType sms_type) {
     while (!is_GSM_connected() && connection_timeout > current_time) {
         delay(500);
         log(".");
-        _is_sim800l_on ? current_time = millis() : begin();
+        current_time = millis();
+        if (!_is_sim800l_on) { 
+            begin(); 
+        }
     }
-    get_diagnostic_details(sms_type);
 
+    if (sms_type == SMSType::Diagnostic) { 
+        get_diagnostic_details();
+    }
+    
     // Send SMS (to multiple or single number)
     for (const auto& phone_number : secret_phone_numbers) {
         if (!send_sms(sms_type, phone_number)) { 
@@ -97,7 +100,9 @@ void GsmModule::flush_RX_buffer() {
 
 
 void GsmModule::power_off() {
-    log("SIM800L OFF!\n");
+    if (_is_sim800l_on) {
+        log("SIM800L powering down!\n");
+    }
     digitalWrite(PIN_SIM800L_POWER_SWITCH, LOW);
 }
 
@@ -170,11 +175,7 @@ bool GsmModule::is_GSM_connected() {
 }
 
 
-void GsmModule::get_diagnostic_details(const SMSType sms_type) {
-    if (sms_type == SMSType::Alert) { 
-        return;
-    }
-
+void GsmModule::get_diagnostic_details() {
     // Grab info  
     _signal_strength = get_GSM_signal_strength();
     get_model_name(_model_name);
