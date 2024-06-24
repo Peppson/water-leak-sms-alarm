@@ -34,6 +34,7 @@ More images in:
 - P-channel mos: NTR4101PT1G 
 - N-channel mos: PMV16XNR  
 - Cap 470uF: Electrolytic  
+- Cap 10uF: Electrolytic
 - Cap 1uF: Ceramic  
 - Cap 100nF: Ceramic
 - Switch: Momentary DPST  
@@ -48,13 +49,13 @@ More images in:
 > Uses mostly through-hole components for easier soldering.  
 > ESP32 is mounted on the bottom side of the PCB.
 
-![PCB](./_images/pcb_schematic.PNG)
+![PCB](./_images/PCB_layot.PNG)
 &nbsp;
 </details>
 
 
 ### Schematic
-![Schematic](./_images/schematic_v2.png)
+![Schematic](./_images/schematic_v3.png)
 
 &nbsp;
 ### Hardware
