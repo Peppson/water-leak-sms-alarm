@@ -10,7 +10,7 @@ public:
     GsmModule() : GSM_serial(2) {}  // Use UART2 bus
     HardwareSerial GSM_serial;      // Connection to SIM800L module: RX = gpio 16, TX = gpio 17
 
-    bool begin(const SMSType sms_type = SMSType::None);
+    void begin(const SMSType sms_type = SMSType::None);
     void send_message(const SMSType sms_type);
     void flush_buffers();
     void flush_RX_buffer();
@@ -33,7 +33,7 @@ private:
     bool send_sms_guard();
     bool send_sms(const SMSType sms_type, const char* phone_number);
     bool is_GSM_connected();
-    void get_diagnostic_details(const SMSType sms_type);
+    void get_diagnostic_details();
     int get_GSM_signal_strength();
     void get_model_name(std::string& model_name);
     void get_network_operator(std::string& operator_name);
@@ -44,13 +44,3 @@ private:
     bool send_serial_and_verify(const char* command, std::string& response, bool print = false, uint extra_delay = 0);
     int string_to_int(std::string& response);
 };
-
-
-/*
-// secrets.h
-constexpr const char* secret_phone_numbers[] = {
-    "XXXXXXXXXX",
-    "XXXXXXXXXX" 
-    ...
-};
-*/
