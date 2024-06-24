@@ -94,9 +94,13 @@ bool IRAM_ATTR woke_up_from_deepsleep() {
 
 
 void deepsleep(const uint32_t& sleep_duration_seconds) {
-    log("Deepsleep: %s\n", (sleep_duration_seconds < 60) ? "Short" : "Long");
-
+    // Skip the normal deepsleep while debugging
+    #if USB_SERIAL_ENABLED && DEBUG_LOOP_ENABLED
+        return;
+    #endif
+    
     peripherals_shutdown();
+    log("Deepsleep: %s\n", (sleep_duration_seconds < 60) ? "Short" : "Long");
 
     // Set wakeup sources: Timer and TEST_BUTTON
     esp_sleep_enable_timer_wakeup(sleep_duration_seconds * DEEPSLEEP_uS_TO_S_FACTOR);
@@ -128,11 +132,9 @@ void system_shutdown() {
     peripherals_shutdown();
 
     // Circuit power latch OFF
-    #if USB_SERIAL_ENABLED
-        log("Power OFF!\n"); while (1) { }
-    #else
-        digitalWrite(PIN_CIRCUIT_POWER_SWITCH, HIGH);  
-    #endif
+    log("Power OFF!\n");
+    digitalWrite(PIN_CIRCUIT_POWER_SWITCH, HIGH);  
+    while (1) { }
     /* OFF */
 }
 
