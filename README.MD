@@ -60,6 +60,9 @@ More images in:
 &nbsp;
 ### Hardware
 
+> This picture shows version 1.  
+> Version 2 eliminates some of the large capacitors that occasionally made the unit bootloop.  
+
 ![Hardware](./_images/hardware.jpg)
 
 &nbsp;
