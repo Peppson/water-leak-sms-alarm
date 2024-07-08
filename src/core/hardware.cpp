@@ -20,7 +20,6 @@ void IRAM_ATTR begin_hardware(Memory* memory, GsmModule* sms) {
     digitalWrite(PIN_SIM800L_POWER_SWITCH, LOW);
 
     pinMode(PIN_TEST_BUTTON, INPUT_PULLDOWN);
-    pinMode(PIN_WATERLEAK_DETECT, INPUT_PULLDOWN);
 
     // Memory, Serial and Led
     memory->begin(); 
@@ -47,7 +46,7 @@ void IRAM_ATTR begin_hardware(Memory* memory, GsmModule* sms) {
 
 
 void begin_USB_serial() {
-    #if USB_SERIAL_ENABLED
+    #if USB_SERIAL_ENABLED 
         Serial.begin(115200);
         while (!Serial) { delay(1); }
 
@@ -71,17 +70,18 @@ bool is_test_button_pressed() {
 
 
 bool is_water_leak_detected() {
-    constexpr uint8_t threshold = 5;
+    pinMode(PIN_WATERLEAK_DETECT, INPUT_PULLDOWN);
     constexpr uint8_t times = 25;
     uint32_t value = 0;
-
+    
     // Get average ADC reading
     for (uint8_t i = 0; i < times; i++) {
         value += analogRead(PIN_WATERLEAK_DETECT);
         delay(1);
     }
 
-    return (value / times > threshold);
+    pinMode(PIN_WATERLEAK_DETECT, OUTPUT);
+    return (value / times > 5);
 }
 
 
@@ -108,6 +108,7 @@ void deepsleep(const uint32_t& sleep_duration_seconds) {
     static_assert(PIN_TEST_BUTTON == 13, "TEST_BUTTON GPIO changed!");
 
     // ZzzzZZZzzZZZz
+    delay(1000); // Needed to prevent bootlooping
     esp_deep_sleep_start();
     /*reboot*/
 }
@@ -115,12 +116,12 @@ void deepsleep(const uint32_t& sleep_duration_seconds) {
 
 void peripherals_shutdown() {
     // GsmModule
-    if (_sms_ptr != nullptr) { 
+    if (_sms_ptr) { 
         _sms_ptr->flush_buffers();
         _sms_ptr->power_off(); 
     }
     // EEPROM memory
-    if (_memory_ptr != nullptr) { 
+    if (_memory_ptr) { 
         _memory_ptr->end(); 
     }
     // Led 
