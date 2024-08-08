@@ -128,7 +128,7 @@ void debug_USB_serial(Memory& memory, GsmModule& sms) {
 
         // Misc
         case '4': log(">\n");                                                                                   break;
-        case '5': log("> Deepsleep! \n"); delay(1000); hardware::deepsleep(10);                         break;
+        case '5': log("> Deepsleep! \n"); delay(1000); hardware::deepsleep(10);                         	break;
         case '6': log("> Rebooting\n"); delay(1000); ESP.restart();                                             break;
         case '7': log("> sms.begin()\n"); sms.begin();                                                          break;
         case '8': log("> GSM power off\n"); sms.power_off();                                                    break;
