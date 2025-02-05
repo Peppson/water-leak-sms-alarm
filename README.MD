@@ -66,6 +66,6 @@ More images in:
 ![Hardware](./_images/hardware.jpg)
 
 &nbsp;
-## SMS Example
+### SMS Example
 
 <img src="./_images/sms_example.png" alt="SMS Example" style="width: 50%;">
