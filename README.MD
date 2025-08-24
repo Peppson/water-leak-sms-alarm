@@ -2,6 +2,7 @@
 # water-leak-sms-alarm <img src="./_images/water_icon.svg" style=" width: 40px; margin-bottom: -4px;">  
 A small battery-powered device that detects water leakage and sends an SMS alert.  
 &nbsp;
+![Hardware](./_images/hardware.jpg)
 
 ## Features
 - Completely `off` until water *(or anything conductive)* closes the circuit between two of its legs,  
@@ -57,13 +58,6 @@ More images in:
 ### Schematic
 ![Schematic](./_images/schematic_2.png)
 
-&nbsp;
-### Hardware
-
-> This picture shows version 1.  
-> Version 2 eliminates some of the large capacitors that occasionally made the unit bootloop.  
-
-![Hardware](./_images/hardware.jpg)
 
 &nbsp;
 ### SMS Example
