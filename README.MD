@@ -4,6 +4,7 @@ A small battery-powered device that detects water leakage and sends an SMS alert
 &nbsp;
 ![Hardware](./_images/hardware.jpg)
 
+&nbsp; 
 ## Features
 - Completely `off` until water *(or anything conductive)* closes the circuit between two of its legs,  
 thereby latching on the "soft latching power circuit".  
@@ -59,7 +60,6 @@ More images in:
 ![Schematic](./_images/schematic_2.png)
 
 
-&nbsp;
 ### SMS Example
 
 <img src="./_images/sms_example.png" alt="SMS Example" style="width: 50%;">
